@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Hôtel - CiaoSpace </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-dark" id="ftco-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Ciao Space</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="oi oi-menu"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active"><a href="index.html" class="nav-link">Accueil</a></li>
+            <li class="nav-item"><a href="search.html" class="nav-link">Rechercher</a></li>
+            <li class="nav-item "><a href="about.html" class="nav-link">A propos</a></li>
+            <li class="nav-item"><a href="partner.html" class="nav-link">Devenir partenaire</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+           
+            <li class="nav-item dropdown d-xl-inline-flex user-dropdown">
+              <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                <i id="img"></i><span class="font-weight-normal" id="res"></span>
+                    <script>  
+                      var img = document.getElementById("img");
+                      img.innerHTML =`<img src="` +localStorage.getItem("image")+ `" class="img-xs rounded-circle ml-2">`;
+                      var res = document.getElementById("res");
+                      res.innerHTML = localStorage.getItem("username");
+                  
+                 </script>
+                  </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                <div class="dropdown-header text-center">
+                  <p id="photo"></p>
+                  <script>
+                    var photo = document.getElementById("photo");
+                    photo.innerHTML =`<img src="` +localStorage.getItem("image")+ `" class="img-lg rounded-circle"   alt="Profile image" >`;
+                  </script>
+                  <h5 class="mb-1 mt-2 text-primary" id="nom" >
+                    <script>
+                      var nom = document.getElementById("nom");
+                      nom.innerHTML = localStorage.getItem("username");
+                  </script>
+                </h5>
+                  <p class="font-weight-light text-muted mb-0" id="re" >
+                    <script>
+                      var re = document.getElementById("re");
+                      re.innerHTML = localStorage.getItem("email");
+                  </script>
+                  </p>
+                </div>
+                <a class="dropdown-item" href="edit-profil.html" ><i class="dropdown-item-icon icon-user text-primary mr-2"></i> Mon profil </a>
+                <a class="dropdown-item"  onclick="logout();"><i class="dropdown-item-icon icon-power text-primary mr-2"></i>Déconnecter</a>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- END nav -->
+   
+
+    <!-- END  -->
+    <section class="ftco-section bg-light">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-5">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+            <span class="subheading">Notre menu</span>
+            <h2>Hôtel</h2>
+          </div>
+        </div>
+        
+      </div>
+  
+      <section class="ftco-section room-section">
+        <div class="container" style="margin-top: -10%;">
+          <div class="row">
+            <div class="col-md-12 ftco-animate">
+             <div class="carousel-room owl-carousel">
+              <div class="item">
+                <div class="room-wrap">
+                  <a href="#" class="room-img" style="background-image: url(images/spa-1.jpg);"></a>
+                  
+                </div>
+              </div>
+              
+              
+              <div class="item">
+                <div class="room-wrap">
+                  <a href="#" class="room-img" style="background-image: url(images/spa-1.jpg);"></a>
+                  
+                </div>
+              </div>
+              <div class="item">
+                <div class="room-wrap">
+                  <a href="#" class="room-img" style="background-image: url(images/spa-1.jpg);"></a>
+                  
+                </div>
+              </div>
+              <div class="item">
+                <div class="room-wrap">
+                   <a href="#" class="room-img" style="background-image: url(images/spa-1.jpg);"></a>
+               
+              </div>
+            </div>
+            
+            
+            
+             </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="services bg-light" style="margin-top: -5%;" >
+        <div class="container">
+          <div class="row no-gutters">
+            <div class="col-md-4 ftco-animate py-5 nav-link-wrap aside-stretch">
+              <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link px-4 active" id="v-pills-master-tab" data-toggle="pill" href="#v-pills-master" role="tab" aria-controls="v-pills-master" aria-selected="true"> DESCRIPTION </a>
+  
+                <a class="nav-link px-4" id="v-pills-buffet-tab" data-toggle="pill" href="#v-pills-buffet" role="tab" aria-controls="v-pills-buffet" aria-selected="false"> L'OFFRE COMPREND</a>
+  
+                <a class="nav-link px-4" id="v-pills-fitness-tab" data-toggle="pill" href="#v-pills-fitness" role="tab" aria-controls="v-pills-fitness" aria-selected="false"> CONDITION D'UTILISATION</a>
+              </div>
+            </div>
+
+            <div class="col-md-8 ftco-animate p-4 p-md-5 d-flex align-items-center">
+              
+              <div class="tab-content pl-md-5" id="v-pills-tabContent">
+  
+                <div class="tab-pane fade show active" id="v-pills-master" role="tabpanel" aria-labelledby="v-pills-master-tab">
+                  <div class="row">
+                    <div class="col-sm">
+                      <p class="lead">En quelques clics seulement, il vous suffit d’utiliser notre moteur pour trouver les établissements disponibles à vos dates, sélectionner le meilleur hôtel Tunisie qui répond à vos exigences.</p>
+                      <p><a href="hotel.html" class="btn btn-primary">Découvrez nos hôtels</a></p>
+                    </div>
+                   
+  
+                </div>
+                </div>
+  
+                <div class="tab-pane fade" id="v-pills-buffet" role="tabpanel" aria-labelledby="v-pills-buffet-tab">
+                  <p class="lead">En quelques clics seulement, il vous suffit d’utiliser notre moteur pour trouver les établissements disponibles à vos dates, sélectionner le meilleur hôtel Tunisie qui répond à vos exigences.</p>
+                  <p><a href="cafes-resto.html" class="btn btn-primary">Découvrez nos cafés &amp; resto</a></p>
+                </div>
+  
+                <div class="tab-pane fade" id="v-pills-fitness" role="tabpanel" aria-labelledby="v-pills-fitness-tab">
+                  <p class="lead">En quelques clics seulement, il vous suffit d’utiliser notre moteur pour trouver les établissements disponibles à vos dates, sélectionner le meilleur hôtel Tunisie qui répond à vos exigences.</p>
+                  <p><a href="centre-fitness.html" class="btn btn-primary">Découvrez nos centre Fitness</a></p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+
+      <div class="container" style="margin-top: 10%;" >
+        <div class="row bootstrap snippets bootdeys">
+          <div class="col-md-6 col-sm-12" >
+            <div class="panel-heading">
+              Ecrivez un avis
+            </div>
+                <textarea class="form-control" placeholder="écrire un avis..." rows="3"></textarea>
+                <br>
+                <button type="button" class="btn btn-info pull-right">Ajouter un avis</button>
+                <div class="clearfix"></div>
+               
+          </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="comment-wrapper">
+                    <div class="panel panel-info">
+                            <ul class="media-list">
+                                <li class="media">
+                                    <a href="#" class="pull-left">
+                                        <img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
+                                    </a>
+                                    <div class="media-body">
+                                        <span class="text-muted pull-right">
+                                            <small class="text-muted">30 min ago</small>
+                                        </span>
+                                        <strong class="text-success">@MartinoMont</strong>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            Lorem ipsum dolor sit amet, <a href="#">#consecteturadipiscing </a>.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="media">
+                                    <a href="#" class="pull-left">
+                                        <img src="https://bootdey.com/img/Content/user_2.jpg" alt="" class="img-circle">
+                                    </a>
+                                    <div class="media-body">
+                                        <span class="text-muted pull-right">
+                                            <small class="text-muted">30 min ago</small>
+                                        </span>
+                                        <strong class="text-success">@LaurenceCorreil</strong>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            Lorem ipsum dolor <a href="#">#ipsumdolor </a>adipiscing elit.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="media">
+                                    <a href="#" class="pull-left">
+                                        <img src="https://bootdey.com/img/Content/user_3.jpg" alt="" class="img-circle">
+                                    </a>
+                                    <div class="media-body">
+                                        <span class="text-muted pull-right">
+                                            <small class="text-muted">30 min ago</small>
+                                        </span>
+                                        <strong class="text-success">@JohnNida</strong>
+                                        <p>
+                                            Lorem ipsum dolor <a href="#">#sitamet</a> sit amet, consectetur adipiscing elit.
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+        
+            </div>
+            
+        </div>
+        </div>
+    
+    </section>
+
+  
+    
+      
+    <section class="instagram">
+      <div class="container-fluid">
+        <div class="row no-gutters justify-content-center pb-5">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+            <h2><span class="icon-instagram"></span> Instagram</h2>
+          </div>
+        </div>
+        <div class="row no-gutters">
+          <div class="col-sm-12 col-md ftco-animate">
+            <a href="images/insta-4.jpg" class="insta-img image-popup" style="background-image: url(images/insta-4.jpg);">
+              <div class="icon d-flex justify-content-center">
+                <span class="icon-instagram align-self-center"></span>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-12 col-md ftco-animate">
+            <a href="images/insta-2.jpg" class="insta-img image-popup" style="background-image: url(images/insta-2.jpg);">
+              <div class="icon d-flex justify-content-center">
+                <span class="icon-instagram align-self-center"></span>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-12 col-md ftco-animate">
+            <a href="images/insta-3.jpg" class="insta-img image-popup" style="background-image: url(images/insta-3.jpg);">
+              <div class="icon d-flex justify-content-center">
+                <span class="icon-instagram align-self-center"></span>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-12 col-md ftco-animate">
+            <a href="images/insta-6.jpg" class="insta-img image-popup" style="background-image: url(images/insta-6.jpg);">
+              <div class="icon d-flex justify-content-center">
+                <span class="icon-instagram align-self-center"></span>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-12 col-md ftco-animate">
+            <a href="images/insta-5.jpg" class="insta-img image-popup" style="background-image: url(images/insta-5.jpg);">
+              <div class="icon d-flex justify-content-center">
+                <span class="icon-instagram align-self-center"></span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+
+      <footer class="bg-dark text-center text-white">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+          <!-- Section: Social media -->
+          <section class="mb-4">
+            <!-- Facebook -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+              ><i class="icon-facebook"></i
+            ></a>
+      
+            <!-- Google -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+              ><i class="icon-google"></i
+            ></a>
+      
+            <!-- Instagram -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+              ><i class="icon-instagram"></i
+            ></a>
+          </section>
+          <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+      
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+          © 2021 Copyright:
+          <a class="text-white" href="https://ciaospace.com/">ciaospace.com</a>
+        </div>
+        <!-- Copyright -->
+      </footer>
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/jquery.timepicker.min.js"></script>
+  <script src="js/countrypicker.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Inscription - CiaoSpace</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="login/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="login/css/style.css">
+</head>
+<body>
+
+    <div class="main">
+
+        <!-- Sign up form -->
+        <section class="signup" style="margin-top: -16%;">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <figure><img src="images/logo02.png" alt="sing up image" width="175px" height="51px"></figure>
+                        <form onsubmit="return false;" class="register-form" id="register-form">
+                            <div class="form-group">
+                                <label for="pre_cl"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" id="pre_cl" placeholder="Prénom" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="username"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" id="username" placeholder="Nom de famille" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                <input type="email" name="email" id="email" placeholder="E-mail" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="adresse"><i class="zmdi zmdi-home"></i></label>
+                                <input type="text" name="adresse" id="adresse" placeholder="Adresse" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="tel"><i class="zmdi zmdi-phone"></i></label>
+                                <input type="text" id="tel" placeholder="Numéro de mobile" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="dat_naissance"><i class="zmdi zmdi-calendar-alt"></i></label>
+                                <input type="date" id="dat_naissance" placeholder="Date de naissance" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="password"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="password" id="password" placeholder="Mot de passe" required/>
+                            </div>
+                            <a href="login.html" class="signup-image-link">Vous avez un compte ?</a>
+                            <div class="form-group form-button">
+                                <input onclick="register();" type="button" class="form-submit" value="S'inscrire"/>
+                            </div>
+                        </form>
+
+                    </div>
+                    
+                   
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+
+    <script>
+
+        function register(){
+            // Post a user
+        var url = "http://192.168.43.93:3000/clients";
+        
+        var data = {};
+    // récupération des données dans la variable data . 
+        
+    data.username  = document.getElementById("username").value;
+    data.pre_cl  = document.getElementById("pre_cl").value;
+    data.adresse  = document.getElementById("adresse").value;
+    data.email  = document.getElementById("email").value;
+    data.dat_naissance  = document.getElementById("dat_naissance").value;
+    data.tel  = document.getElementById("tel").value;
+    data.password  = document.getElementById("password").value;
+   
+        
+        
+        var json = JSON.stringify(data);
+        var xhr = new XMLHttpRequest(); // definir une request de connection standard js 
+        xhr.open("POST", url, true);  // choisir la méthode post comme méthode d'accès au serveur pour avoir la possibilité d'envoyer les données au serveur .
+        xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+        xhr.onload = function () {
+            var clients = JSON.parse(xhr.responseText);
+            if (xhr.readyState == 4 && xhr.status == "200") {
+                console.table(clients);
+    
+           alert(" utilisateur ajouter ");
+               
+                   location.replace("signin.html");
+        
+            } else {
+                alert(clients.message);
+                console.table(clients);
+            
+            }
+        }
+        xhr.send(json);
+        }
+    
+    </script>
+
+
+    <!-- JS -->
+    <script src="login/vendor/jquery/jquery.min.js"></script>
+    <script src="login/js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

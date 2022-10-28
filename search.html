@@ -1,0 +1,603 @@
+<script>
+  if(!localStorage.getItem("id") )
+  {
+    location.replace("login.html");
+  }
+</script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Accueil - Ciao Space</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-dark" id="ftco-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="index.html"><img src="images/logoo.png" alt="logo" class="logo-dark" style="width: 10rem; height: 3rem;" /></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="oi oi-menu"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+            
+            <li class="nav-item "><a href="index.html" class="nav-link">Accueil</a></li>
+            <li class="nav-item active"><a href="search.html" class="nav-link">Rechercher</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">A propos</a></li>
+            <li class="nav-item"><a href="partner.html" class="nav-link">Devenir partenaire</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+          
+
+            <li class="nav-item dropdown d-xl-inline-flex user-dropdown">
+              <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                <i id="img"></i><span class="font-weight-normal" id="res"></span>
+                    <script>  
+                      var img = document.getElementById("img");
+                      img.innerHTML =`<img src="` +localStorage.getItem("image")+ `" class="img-xs rounded-circle ml-2">`;
+                      var res = document.getElementById("res");
+                      res.innerHTML = localStorage.getItem("username");
+                  
+                 </script>
+                  </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                <div class="dropdown-header text-center">
+                  <p id="photo"></p>
+                  <script>
+                    var photo = document.getElementById("photo");
+                    photo.innerHTML =`<img src="` +localStorage.getItem("image")+ `" class="img-lg rounded-circle"   alt="Profile image" >`;
+                  </script>
+                  <h5 class="mb-1 mt-2 text-primary" id="nom" >
+                    <script>
+                      var nom = document.getElementById("nom");
+                      nom.innerHTML = localStorage.getItem("username");
+                  </script>
+                </h5>
+                  <p class="font-weight-light text-muted mb-0" id="re" >
+                    <script>
+                      var re = document.getElementById("re");
+                      re.innerHTML = localStorage.getItem("email");
+                  </script>
+                  </p>
+                </div>
+                <a class="dropdown-item" href="edit-profil.html" ><i class="dropdown-item-icon icon-user text-primary mr-2"></i> Mon profil </a>
+                <a class="dropdown-item"  onclick="logout();"><i class="dropdown-item-icon icon-power text-primary mr-2"></i>Déconnecter</a>
+              </div>
+            </li>
+      
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- END nav -->
+    
+          <!--Log Out-->
+          <script>
+            function logout()
+            {
+                var c  = window.confirm("Deconnecter");
+                if (c == true)
+                {
+                    localStorage.clear();
+                    location.replace("login.html");
+                }
+            }
+          </script>
+
+     
+     <!-- ======= Chefs Section ======= -->
+     <section id="chefs" class="chefs">
+      <div class="container" style="margin-top: -2%;">
+
+        <div class="row justify-content-center mb-5 pb-5">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+            <span class="subheading">Rechercher</span>
+            <h2>Découvrez nos endroits </h2>
+            <div class="input-group">
+               <div class="input-group-prepend">
+                  <span class="input-group-text icon-search" id="basic-addon1"></span>
+              </div>
+              <input type="search" class="form-control" placeholder="Rechercher" aria-describedby="basic-addon1" id="myInput" onkeyup="myFunction();"  />
+            </div>
+          </div>
+        </div>
+
+        <div class="row"  id="list" >
+          
+              
+        </div>
+
+      </div>
+    </section><!-- End Chefs Section -->
+    <script>
+      // Create a request variable and assign a new XMLHttpRequest object to it.
+      var request = new XMLHttpRequest()
+          
+      // Open a new connection, using the GET request on the URL endpoint
+      request.open('GET', 'http://192.168.43.93:3000/partners', true)
+      
+      request.onload = function() {
+          // Begin accessing JSON data here
+          var data = JSON.parse(this.response)
+          
+          console.log(data);
+          var j = 1;
+          var ee = document.getElementById("list");
+          data.forEach(i => {
+              console.log(j);
+              
+             
+              ch = `
+              <div class="col-lg-4">
+              <div class="member">
+                <br>
+                <div class="pic"><img src="`+i.image +`" class="img-fluid" alt=""></div>
+                <div class="member-info">
+                  <h4><b>`+i.username  +`</b></h4>
+                  <span>`+i.type_activite  +`</span>
+                  <div class="container p-2 pb-0">
+                    <a class="btn btn-outline-primary btn-primary m-1" href="`+i.lien_fb  +`" role="button">
+                      <i class="icon-facebook"></i>
+                    </a>
+                    <a class="btn btn-outline-primary btn-primary m-1" href="`+i.lien_insta  +`" role="button">
+                      <i class="icon-instagram"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div> 
+           `;
+            
+          
+              ee.insertAdjacentHTML('beforeend',ch);
+          
+        })
+        
+      }
+          
+      // Send request
+      request.send()    
+  </script> 
+
+    <section class="instagram">
+      <div class="container-fluid">
+        <div class="row no-gutters justify-content-center pb-5">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+            <h2><span class="icon-instagram"></span> Instagram</h2>
+          </div>
+        </div>
+        <div class="row no-gutters">
+          <div class="col-sm-12 col-md ftco-animate">
+            <a href="images/insta-4.jpg" class="insta-img image-popup" style="background-image: url(images/insta-4.jpg);">
+              <div class="icon d-flex justify-content-center">
+                <span class="icon-instagram align-self-center"></span>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-12 col-md ftco-animate">
+            <a href="images/insta-2.jpg" class="insta-img image-popup" style="background-image: url(images/insta-2.jpg);">
+              <div class="icon d-flex justify-content-center">
+                <span class="icon-instagram align-self-center"></span>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-12 col-md ftco-animate">
+            <a href="images/insta-3.jpg" class="insta-img image-popup" style="background-image: url(images/insta-3.jpg);">
+              <div class="icon d-flex justify-content-center">
+                <span class="icon-instagram align-self-center"></span>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-12 col-md ftco-animate">
+            <a href="images/insta-7.jpg" class="insta-img image-popup" style="background-image: url(images/insta-7.jpg);">
+              <div class="icon d-flex justify-content-center">
+                <span class="icon-instagram align-self-center"></span>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-12 col-md ftco-animate">
+            <a href="images/insta-5.jpg" class="insta-img image-popup" style="background-image: url(images/insta-5.jpg);">
+              <div class="icon d-flex justify-content-center">
+                <span class="icon-instagram align-self-center"></span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-dark text-center text-white">
+      <!-- Grid container -->
+      <div class="container p-4 pb-0">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+          <!-- Facebook -->
+          <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/CiaoSpace-100346788831327" role="button"
+            ><i class="icon-facebook"></i
+          ></a>
+    
+          <!-- Google -->
+          <a class="btn btn-outline-light btn-floating m-1" href="https://myaccount.google.com/u/2/?utm_source=sign_in_no_continue&pli=1" role="button"
+            ><i class="icon-google"></i
+          ></a>
+    
+          <!-- Instagram -->
+          <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/ciaospace2021/" role="button"
+            ><i class="icon-instagram"></i
+          ></a>
+        </section>
+        <!-- Section: Social media -->
+      </div>
+      <!-- Grid container -->
+    
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2021 Copyright:
+        <a class="text-white" href="https://ciaospace.com/">ciaospace.com</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script>
+    function myFunction() {
+    
+        var input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById("myInput");
+        search(input.value);
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("list");
+        li = document.getElementsByClassName("col-lg-4");
+       
+        for (i = 0; i < li.length; i++) {
+            console.log(li[i].getElementsByTagName("h4"));
+            a = li[i].getElementsByTagName("h4")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
+    </script>
+
+
+
+<script>
+
+function search(ww){
+
+
+
+ // On initialise la latitude et la longitude de Tunis (centre de la carte)
+ var x = 35.821430;
+      var y = 10.634422;
+      var map = null;
+      // Fonction d'initialisation de la carte
+      function initMap() {
+  map = new google.maps.Map(document.getElementById("googleMap"), {
+  center: new google.maps.LatLng(x, y),
+  zoom: 13,
+  mapTypeId: google.maps.MapTypeId.ROADMAP,
+  mapTypeControl: true,
+  scrollwheel: false,
+  mapTypeControlOptions: {
+      style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR
+  },
+      navigationControl: true,
+      navigationControlOptions: {
+      style: google.maps.NavigationControlStyle.ZOOM_PAN
+  }
+  });
+  // Nous appelons la fonction ajax de jQuery
+  $.ajax({
+  // On pointe vers le fichier selectData.php
+  url : "http://192.168.43.93:3000/partners",
+  }).done(function(json){ // Si on obtient une réponse, elle est stockée dans la variable json
+  console.log(json);  
+  // On construit l'objet villes à partir de la variable json 
+  //var positions = JSON.parse(json);
+  // console.log(positions);
+  // On parcourt l'objet villes
+  
+  var icon1 = {url:"markers/hotels.png",scaledSize: new google.maps.Size(30, 45), origin: new google.maps.Point(0,0), anchor: new google.maps.Point(25, 50)};
+  var icon2 = {url:"markers/caferesto.png",scaledSize: new google.maps.Size(30, 45), origin: new google.maps.Point(0,0), anchor: new google.maps.Point(25, 50)};
+  var icon3 = {url:"markers/sports.png",scaledSize: new google.maps.Size(30, 45), origin: new google.maps.Point(0,0), anchor: new google.maps.Point(25, 50)};
+  var icon4 = {url:"markers/saloon.png",scaledSize: new google.maps.Size(30, 45), origin: new google.maps.Point(0,0), anchor: new google.maps.Point(25, 50)};
+  var icon5 = {url:"markers/travel.png",scaledSize: new google.maps.Size(30, 45), origin: new google.maps.Point(0,0), anchor: new google.maps.Point(25, 50)};
+  var icon6 = {url:"markers/shopping.png",scaledSize: new google.maps.Size(30, 45), origin: new google.maps.Point(0,0), anchor: new google.maps.Point(25, 50)};
+  var icon7 = {url:"markers/bars.png",scaledSize: new google.maps.Size(30, 45), origin: new google.maps.Point(0,0), anchor: new google.maps.Point(25, 50)};
+
+  var value1= 10
+  var value2= 20;
+  var value3= 30;
+
+
+
+  var lattlong = new google.maps.LatLng(localStorage.getItem('x'), localStorage.getItem('y'));
+
+  var markerg =
+         new google.maps.Marker({position:lattlong, map:map, title:"You are here!"});
+
+
+  for(position in json){
+    
+    if ( json[position].username == ww ){
+  
+      
+      console.log(json[position].type_activite);
+  
+      if (  json[position].type_activite =="hotels"){
+
+        
+  console.log(json[position].x);
+
+
+
+
+  var dd = calcCrow(localStorage.getItem('x'),localStorage.getItem('y'),json[position].x,json[position].y).toFixed(1);
+
+
+
+
+  const contentString =
+    '<div id="content">' +
+    '<div id="siteNotice">' +
+    "</div>" +
+    '<h1 id="firstHeading" class="firstHeading">'+ json[position].username +'</h1>' +
+    '<div id="bodyContent">' +
+    "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
+      "<p><b>Distance promixmté : </b>, "+ dd +" Km </b>, is a large " +
+    "Heritage Site.</p>" +
+    '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
+    "https://en.wikipedia.org/w/index.php?title=Uluru</a> " +
+    "(last visited June 22, 2009).</p>" +
+    "</div>" +
+    "</div>";
+  const infowindow = new google.maps.InfoWindow({
+    content: contentString,
+  });
+
+
+
+
+  
+      
+      var marker = new google.maps.Marker({
+          // parseFloat nous permet de transformer la latitude et la longitude en nombre décimal
+          position: {lat: parseFloat(json[position].x), lng: parseFloat(json[position].y)},
+          title: json[position].username,
+          icon: icon1,
+          map: map,
+          
+      });	
+
+
+      marker.addListener("click", () => {
+    infowindow.open({
+      anchor: marker,
+      map,
+      shouldFocus: false,
+    });
+  });
+
+      
+  }
+
+
+  if (  json[position].type_activite == "caferesto"){
+
+    
+console.log(json[position].x);
+
+  
+  var marker = new google.maps.Marker({
+      // parseFloat nous permet de transformer la latitude et la longitude en nombre décimal
+      position: {lat: parseFloat(json[position].x), lng: parseFloat(json[position].y)},
+      title: json[position].username,
+      icon: icon2,
+      map: map
+  });	
+  
+}
+
+
+if (  json[position].type_activite == "fitness"){
+
+  
+console.log(json[position].x);
+
+
+var marker = new google.maps.Marker({
+    // parseFloat nous permet de transformer la latitude et la longitude en nombre décimal
+    position: {lat: parseFloat(json[position].x), lng: parseFloat(json[position].y)},
+    title: json[position].username,
+    icon: icon3,
+    map: map
+});	
+
+}
+
+if (  json[position].type_activite == "beautelook"){
+
+ 
+console.log(json[position].x);
+
+
+var marker = new google.maps.Marker({
+    // parseFloat nous permet de transformer la latitude et la longitude en nombre décimal
+    position: {lat: parseFloat(json[position].x), lng: parseFloat(json[position].y)},
+    title: json[position].username,
+    icon: icon4,
+    map: map
+});	
+
+}
+
+if (  json[position].type_activite == "hammamspa"){
+
+ 
+console.log(json[position].x);
+
+
+var marker = new google.maps.Marker({
+    // parseFloat nous permet de transformer la latitude et la longitude en nombre décimal
+    position: {lat: parseFloat(json[position].x), lng: parseFloat(json[position].y)},
+    title: json[position].username,
+    icon: icon5,
+    map: map
+});	
+
+}
+
+if (  json[position].type_activite == "shopping"){
+
+ 
+console.log(json[position].x);
+
+
+var marker = new google.maps.Marker({
+    // parseFloat nous permet de transformer la latitude et la longitude en nombre décimal
+    position: {lat: parseFloat(json[position].x), lng: parseFloat(json[position].y)},
+    title: json[position].username,
+    icon: icon6,
+    map: map
+});	
+
+}
+
+if (  json[position].type_activite == "lounge"){
+
+ 
+console.log(json[position].x);
+
+
+var marker = new google.maps.Marker({
+    // parseFloat nous permet de transformer la latitude et la longitude en nombre décimal
+    position: {lat: parseFloat(json[position].x), lng: parseFloat(json[position].y)},
+    title: json[position].username,
+    icon: icon7,
+    map: map
+});	
+
+}     
+  }
+}
+  
+  });
+  
+  }
+      window.onload = function(){
+          // Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
+          initMap(); 
+      };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/jquery.timepicker.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+  
+  </body>
+</html>
