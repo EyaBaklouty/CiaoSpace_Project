@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Devenir partenaire - CiaoSpace</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    
+    
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-dark" id="ftco-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="index.html"><img src="images/logoo.png" alt="logo" class="logo-dark" style="width: 10rem; height: 3rem;" /></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="oi oi-menu"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item "><a href="index.html" class="nav-link">Accueil</a></li>
+            <li class="nav-item "><a href="search.html" class="nav-link">Rechercher</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">A propos</a></li>
+            <li class="nav-item active"><a href="partner.html" class="nav-link">Devenir partenaire</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+
+            <li class="nav-item dropdown  d-xl-inline-flex user-dropdown">
+              <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                <i id="img"></i><span class="font-weight-normal" id="res"></span>
+                    <script>  
+                      var img = document.getElementById("img");
+                      img.innerHTML =`<img src="` +localStorage.getItem("image")+ `" class="img-xs rounded-circle ml-2">`;
+                      var res = document.getElementById("res");
+                      res.innerHTML = localStorage.getItem("username");
+                  
+                 </script>
+                  </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                <div class="dropdown-header text-center">
+                  <p id="photo"></p>
+                  <script>
+                    var photo = document.getElementById("photo");
+                    photo.innerHTML =`<img src="` +localStorage.getItem("image")+ `" class="img-lg rounded-circle"   alt="Profile image" >`;
+                  </script>
+                  <h5 class="mb-1 mt-2 text-primary" id="nom" >
+                    <script>
+                      var nom = document.getElementById("nom");
+                      nom.innerHTML = localStorage.getItem("username");
+                  </script>
+                </h5>
+                  <p class="font-weight-light text-muted mb-0" id="re" >
+                    <script>
+                      var re = document.getElementById("re");
+                      re.innerHTML = localStorage.getItem("email");
+                  </script>
+                  </p>
+                </div>
+                <a class="dropdown-item" href="edit-profil.html" ><i class="dropdown-item-icon icon-user text-primary mr-2"></i> Mon profil </a>
+                <a class="dropdown-item"  onclick="logout();"><i class="dropdown-item-icon icon-power text-primary mr-2"></i>Déconnecter</a>
+              </div>
+            </li>
+      
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- END nav -->
+       <!--Log Out-->
+       <script>
+            function logout()
+            {
+                var c  = window.confirm("Deconnecter");
+                if (c == true)
+                {
+                    localStorage.clear();
+                    location.replace("login.html");
+                }
+            }
+          </script>
+
+          <section class="ftco-section room-section bg-light">
+            <div class="container">
+              <div class="row justify-content-center mb-5 pb-5">
+                <div class=" text-center heading-section ftco-animate" style="margin-top: -7%;">
+                  <span class="subheading">Devenir partenaire</span>
+                  <h2> Ciao Space</h2>   
+                </div>
+              </div>    
+                <div class="container d-flex">
+                  <div class="row d-flex">
+                    <div class="col-md-12 ftco-animate makereservation bg-light">
+                      <form onsubmit="return false">
+                        <div class="row mb-5">
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="name">Nom</label>
+                              <input id="username" type="text" class="form-control" placeholder="Nom" required>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="name">E-mail</label>
+                              <input id="email" type="email" class="form-control" placeholder="E-mail" required>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Adresse</label>
+                              <input  id="adresse" type="text" class="form-control" placeholder="Adresse" required>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Numéro de mobile</label>
+                              <input id="tel" type="text" class="form-control" placeholder="Numéro de mobile" required>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Type Activité</label>
+                              <select  id="type_activite" class="form-control"  placeholder="Type Activité"  required >
+                                <option selected>Type Activité</option>
+                                <option value="hotels">Hôtels</option>
+                                <option value="caferesto">Cafés &amp; resto</option>
+                                <option value="fitness">Centre Fitness</option>
+                                <option value="beautelook">Beauté &amp; Look</option>
+                                <option value="hammamspa">Hammam &amp; Spa</option>
+                                <option value="shopping">Shopping</option>
+                                <option value="lounge">Bar &amp; Lounge</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Matricule fiscale</label>
+                              <input id="mat_f" type="text" class="form-control" placeholder="Matricule fiscale" required>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Mot de passe</label>
+                              <input id="password" type="password" class="form-control" placeholder="Mot de passe" required>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Lien Facebook</label>
+                              <input id="lien_fb" type="text" class="form-control" placeholder="Lien Facebook" required>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Lien Instagram</label>
+                              <input id="lien_insta" type="text" class="form-control" placeholder="Lien Instagram" required>
+                            </div>
+                          </div>
+                          <br>
+                          <div class="col-md-4 ">
+                            <div class="form-group">
+                              <label for="">Image</label>
+                              <input type="hidden" class="form-control" id="image" required>
+                              <button class="form-control" onclick="send();">Télécharger image </button>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Latitude </label>
+                              <input id="x" type="text" class="form-control" placeholder="x" required>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Longitude </label>
+                              <input id="y" type="text" class="form-control" placeholder="y" required>
+                            </div>
+                          </div>
+                          <!DOCTYPE html>
+                              <html>
+                              <head>
+                                  <title>Google Maps API - Simple google map with draggable marker Example</title>
+                                  <style type="text/css">
+                                      #map {
+                                          width: 100%;
+                                          height: 400px;
+                                      }
+                                  </style>
+                              </head>
+                              <body>
+                                
+                              <div id="map"></div>
+                              </body>
+                              </html>
+                             
+                          
+                          <div class="col text-center" style="margin-top: 4%;">
+                            <div class="form-group">
+                              <button onclick="register();" type="button" class="btn btn-primary py-2 px-5"> Inscription 
+                              </button>
+                            </div>
+                          </div>
+                          
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </section>
+        <script src="https://static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+        <script>
+        function send(){
+        var i = document.getElementById("image");
+        const client = filestack.init('AoY114sAES6WLOCUsNm9Lz');  
+        client.picker().open();
+          const apikey = 'AhwZv4UE3RsuyRsgFdtz1z';
+          //const client = filestack.init(apikey);
+          const options = {
+            maxFiles: 20,
+            uploadInBackground: false,
+            onOpen: () => console.log('opened!'),
+            onUploadDone: (res) =>  i.value =res.filesUploaded[0].url ,
+          };
+          client.picker(options).open();
+        }
+        </script>
+
+    <script>
+    
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.watchPosition(showPosition);
+        } else { 
+          x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+      }
+          
+      function showPosition(position) {
+        localStorage.setItem("", position.coords.latitude );
+        localStorage.setItem("",  position.coords.longitude );
+        document.getElementById("").value = position.coords.latitude;
+        document.getElementById("").value = position.coords.longitude;
+        
+      }
+      </script>
+ 
+
+  <script>
+    getLocation();
+      function register(){
+          // Post a partner
+      var url = "http://192.168.43.93:3000/partners";
+      
+      var data = {};
+      // récupération des données dans la variable data . 
+          
+      data.username  = document.getElementById("username").value;
+      data.mat_f  = document.getElementById("mat_f").value;
+      data.adresse  = document.getElementById("adresse").value;
+      data.type_activite  = document.getElementById("type_activite").value;
+      data.email  = document.getElementById("email").value;
+      data.tel  = document.getElementById("tel").value;
+      data.password  = document.getElementById("password").value;
+      data.lien_fb  = document.getElementById("lien_fb").value;
+      data.lien_insta  = document.getElementById("lien_insta").value;
+      data.image  = document.getElementById("image").value;
+      data.x = document.getElementById("x").value;
+      data.y = document.getElementById("y").value;
+
+      
+      
+      
+      var json = JSON.stringify(data);
+      var xhr = new XMLHttpRequest(); // definir une request de connection standard js 
+      xhr.open("POST", url, true);  // choisir la méthode post comme méthode d'accès au serveur pour avoir la possibilité d'envoyer les données au serveur .
+      xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+      xhr.onload = function () {
+          var partners = JSON.parse(xhr.responseText);
+          if (xhr.readyState == 4 && xhr.status == "200") {
+              console.table(partners);
+  
+        alert(" partenaire ajouter ");
+            
+        location.replace("../../Partner/template/pages/samples/login.html");
+      
+          } else {
+              alert(partners.message);
+              console.table(partners);
+          
+          }
+      }
+      xhr.send(json);
+      }
+  
+</script>
+
+
+  
+<script>
+function initMap() {
+    var myLatLng = {lat: 35.82556, lng: 10.64111};
+  
+    var map = new google.maps.Map(document.getElementById('map'), {
+      center: myLatLng,
+      zoom: 13
+    });
+  
+    var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Hello World!',
+          draggable: true
+        });
+  
+     google.maps.event.addListener(marker, 'dragend', function(marker) {
+        var latLng = marker.latLng;
+        document.getElementById("x").value = latLng.lat();
+        document.getElementById("y").value = latLng.lng();
+        document.getElementById('lat-span').innerHTML = latLng.lat();
+        document.getElementById('lon-span').innerHTML = latLng.lng();
+     });
+}
+  
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap" async defer></script>
+  
+</body>
+</html>
+
+
+
+    <footer class="bg-dark text-center text-white">
+      <!-- Grid container -->
+      <div class="container p-4 pb-0">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+          <!-- Facebook -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="icon-facebook"></i
+          ></a>
+    
+          <!-- Google -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="icon-google"></i
+          ></a>
+    
+          <!-- Instagram -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="icon-instagram"></i
+          ></a>
+        </section>
+        <!-- Section: Social media -->
+      </div>
+      <!-- Grid container -->
+    
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2021 Copyright:
+        <a class="text-white" href="https://ciaospace.com/">ciaospace.com</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/jquery.timepicker.min.js"></script>
+  <script src="js/countrypicker.js"></script>
+  
+  <script src="js/main.js"></script>
+    
+  </body>
+</html>

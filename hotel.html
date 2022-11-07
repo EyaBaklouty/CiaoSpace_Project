@@ -1,0 +1,267 @@
+<script>
+  if(!localStorage.getItem("id") )
+  {
+    location.replace("login.html");
+  }
+</script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title> Hôtels - CiaoSpace</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-dark" id="ftco-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Ciao Space</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="oi oi-menu"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active"><a href="index.html" class="nav-link">Accueil</a></li>
+            <li class="nav-item"><a href="search.html" class="nav-link">Rechercher</a></li>
+            <li class="nav-item "><a href="about.html" class="nav-link">A propos</a></li>
+            <li class="nav-item"><a href="partner.html" class="nav-link">Devenir partenaire</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+           
+            <li class="nav-item dropdown d-xl-inline-flex user-dropdown">
+              <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                <i id="img"></i><span class="font-weight-normal" id="res"></span>
+                    <script>  
+                      var img = document.getElementById("img");
+                      img.innerHTML =`<img src="` +localStorage.getItem("image")+ `" class="img-xs rounded-circle ml-2">`;
+                      var res = document.getElementById("res");
+                      res.innerHTML = localStorage.getItem("username");
+                  
+                 </script>
+                  </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                <div class="dropdown-header text-center">
+                  <p id="photo"></p>
+                  <script>
+                    var photo = document.getElementById("photo");
+                    photo.innerHTML =`<img src="` +localStorage.getItem("image")+ `" class="img-lg rounded-circle"   alt="Profile image" >`;
+                  </script>
+                  <h5 class="mb-1 mt-2 text-primary" id="nom" >
+                    <script>
+                      var nom = document.getElementById("nom");
+                      nom.innerHTML = localStorage.getItem("username");
+                  </script>
+                </h5>
+                  <p class="font-weight-light text-muted mb-0" id="re" >
+                    <script>
+                      var re = document.getElementById("re");
+                      re.innerHTML = localStorage.getItem("email");
+                  </script>
+                  </p>
+                </div>
+                <a class="dropdown-item" href="edit-profil.html" ><i class="dropdown-item-icon icon-user text-primary mr-2"></i> Mon profil </a>
+                <a class="dropdown-item"  onclick="logout();"><i class="dropdown-item-icon icon-power text-primary mr-2"></i>Déconnecter</a>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- END nav -->
+   
+
+    <!-- END  -->
+    <!-- ======= Chefs Section ======= -->
+    <section id="chefs" class="chefs">
+      <div class="container">
+
+        <div class="row justify-content-center mb-5 pb-5">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+            <span class="subheading">Nos hôtels</span>
+            <h2>Découvrez nos hôtels</h2>
+          </div>
+        </div>
+
+        <div class="row"  id="list">
+          
+              
+        </div>
+
+      </div>
+    </section><!-- End Chefs Section -->
+    <script>
+      // Create a request variable and assign a new XMLHttpRequest object to it.
+      var request = new XMLHttpRequest()
+          
+      // Open a new connection, using the GET request on the URL endpoint
+      request.open('GET', 'http://192.168.43.93:3000/partners', true)
+      
+      request.onload = function() {
+          // Begin accessing JSON data here
+          var data = JSON.parse(this.response)
+          
+          console.log(data);
+          var j = 1;
+          var ee = document.getElementById("list");
+          data.forEach(i => {
+              console.log(j);
+              
+              if(i.type_activite =="hotels" ){
+              ch = `
+              <div class="col-lg-4 col-md-6">
+              <div class="member">
+                <div class="pic"><img src="`+i.image +`" class="img-fluid" alt=""></div>
+                <div class="member-info">
+                  <h4><b>`+i.username  +`</b></h4>
+                  <span>Hôtels</span>
+                  <div class="container p-2 pb-0">
+                    <a class="btn btn-outline-primary btn-primary m-1" href="`+i.lien_fb  +`" role="button">
+                      <i class="icon-facebook"></i>
+                    </a>
+                    <a class="btn btn-outline-primary btn-primary m-1" href="`+i.lien_insta  +`" role="button">
+                      <i class="icon-instagram"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div> `;
+            j = j + 1;
+              ee.insertAdjacentHTML('beforeend',ch);
+          }
+        })
+        
+      }
+          
+      // Send request
+      request.send()    
+  </script> 
+
+    <section class="instagram">
+      <div class="container-fluid">
+        <div class="row no-gutters justify-content-center pb-5">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+            <h2><span class="icon-instagram"></span> Instagram</h2>
+          </div>
+        </div>
+        <div class="row no-gutters">
+          <div class="col-sm-12 col-md ftco-animate">
+            <a href="images/insta-4.jpg" class="insta-img image-popup" style="background-image: url(images/insta-4.jpg);">
+              <div class="icon d-flex justify-content-center">
+                <span class="icon-instagram align-self-center"></span>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-12 col-md ftco-animate">
+            <a href="images/insta-2.jpg" class="insta-img image-popup" style="background-image: url(images/insta-2.jpg);">
+              <div class="icon d-flex justify-content-center">
+                <span class="icon-instagram align-self-center"></span>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-12 col-md ftco-animate">
+            <a href="images/insta-3.jpg" class="insta-img image-popup" style="background-image: url(images/insta-3.jpg);">
+              <div class="icon d-flex justify-content-center">
+                <span class="icon-instagram align-self-center"></span>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-12 col-md ftco-animate">
+            <a href="images/insta-6.jpg" class="insta-img image-popup" style="background-image: url(images/insta-6.jpg);">
+              <div class="icon d-flex justify-content-center">
+                <span class="icon-instagram align-self-center"></span>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-12 col-md ftco-animate">
+            <a href="images/insta-5.jpg" class="insta-img image-popup" style="background-image: url(images/insta-5.jpg);">
+              <div class="icon d-flex justify-content-center">
+                <span class="icon-instagram align-self-center"></span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+      <footer class="bg-dark text-center text-white">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+          <!-- Section: Social media -->
+          <section class="mb-4">
+            <!-- Facebook -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+              ><i class="icon-facebook"></i
+            ></a>
+      
+            <!-- Google -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+              ><i class="icon-google"></i
+            ></a>
+      
+            <!-- Instagram -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+              ><i class="icon-instagram"></i
+            ></a>
+          </section>
+          <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+      
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+          © 2021 Copyright:
+          <a class="text-white" href="https://ciaospace.com/">ciaospace.com</a>
+        </div>
+        <!-- Copyright -->
+      </footer>
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/jquery.timepicker.min.js"></script>
+  <script src="js/countrypicker.js"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+    
+    
+ 
+  </body>
+</html>

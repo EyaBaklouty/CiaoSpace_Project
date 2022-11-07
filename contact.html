@@ -1,0 +1,337 @@
+<script>
+  if(!localStorage.getItem("id") )
+  {
+    location.replace("login.html");
+  }
+</script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Contact- Ciao Space</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-dark" id="ftco-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="index.html"><img src="images/logoo.png" alt="logo" class="logo-dark" style="width: 10rem; height: 3rem;" /></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="oi oi-menu"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item "><a href="index.html" class="nav-link">Accueil</a></li>
+            <li class="nav-item "><a href="search.html" class="nav-link">Rechercher</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">A propos</a></li>
+            <li class="nav-item "><a href="partner.html" class="nav-link">Devenir partenaire</a></li>
+            <li class="nav-item active"><a href="contact.html" class="nav-link">Contact</a></li>
+
+            <li class="nav-item dropdown  d-xl-inline-flex user-dropdown">
+              <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                <i id="img"></i><span class="font-weight-normal" id="res"></span>
+                    <script>  
+                      var img = document.getElementById("img");
+                      img.innerHTML =`<img src="` +localStorage.getItem("image")+ `" class="img-xs rounded-circle ml-2">`;
+                      var res = document.getElementById("res");
+                      res.innerHTML = localStorage.getItem("username");
+                  
+                 </script>
+                  </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                <div class="dropdown-header text-center">
+                  <p id="photo"></p>
+                  <script>
+                    var photo = document.getElementById("photo");
+                    photo.innerHTML =`<img src="` +localStorage.getItem("image")+ `" class="img-lg rounded-circle"   alt="Profile image" >`;
+                  </script>
+                  <h5 class="mb-1 mt-2 text-primary" id="nom" >
+                    <script>
+                      var nom = document.getElementById("nom");
+                      nom.innerHTML = localStorage.getItem("username");
+                  </script>
+                </h5>
+                  <p class="font-weight-light text-muted mb-0" id="re" >
+                    <script>
+                      var re = document.getElementById("re");
+                      re.innerHTML = localStorage.getItem("email");
+                  </script>
+                  </p>
+                </div>
+                <a class="dropdown-item" href="edit-profil.html" ><i class="dropdown-item-icon icon-user text-primary mr-2"></i> Mon profil </a>
+                <a class="dropdown-item"  onclick="logout();"><i class="dropdown-item-icon icon-power text-primary mr-2"></i>Déconnecter</a>
+              </div>
+            </li>
+      
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- END nav -->
+       <!--Log Out-->
+       <script>
+            function logout()
+            {
+                var c  = window.confirm("Deconnecter");
+                if (c == true)
+                {
+                    localStorage.clear();
+                    location.replace("login.html");
+                }
+            }
+          </script>
+
+
+          <section class="contact-section bg-light">
+            <div class="container bg-light">
+              <div class="row justify-content-center mb-5 pb-5" style="margin-top: -4%;">
+                <div class=" text-center heading-section ftco-animate">
+                  <span class="subheading">Contact</span>
+                  <h2> Ciao Space</h2> 
+                </div>
+              </div> 
+              <div class="row d-flex mb-5 contact-info" style="margin-top: -5%;">
+               
+                <div class="w-100"></div>
+                <div class="col-md-3">
+                  <p><span>Adresse:</span> Sousse, tunisie </p>
+                </div>
+                <div class="col-md-3">
+                  <p><span>Numéro de mobile:</span> <a href="tel://1234567920">+216 20304050</a></p>
+                </div>
+                <div class="col-md-3">
+                  <p><span>E-mail:</span> <a href="https://mail.google.com/mail/u/1/?ogbl#inbox">ciaospace2021@gmail.com</a></p>
+                </div>
+                <div class="col-md-3">
+                  <p><span>Site web:</span> <a href="#">ciaospace.com</a></p>
+                </div>
+              </div>
+              <div class="row block-9">
+                <div class="col-md-6 pr-md-5">
+                  <form onsubmit="return false;">
+                    <div class="form-group">
+                      <input id="username" type="text" class="form-control" placeholder="Nom" required>
+                    </div>
+                    <div class="form-group">
+                      <input id="email" type="email" class="form-control" placeholder="E-mail" required>
+                    </div>
+                    <div class="form-group">
+                      <input id="objet" type="text" class="form-control" placeholder="Objet" required>
+                    </div>
+                    <div class="form-group">
+                      <textarea id="message" cols="30" rows="7" class="form-control" placeholder="Message" required>
+                      </textarea>
+                    </div>
+                    <div class="form-group">
+                      <input id="image" type="hidden" class="form-control"  required>
+                    </div>
+                    <div class="form-group">
+                      <button onclick="contact();" type="submit" class="btn btn-primary py-2 px-4">Envoyer message 
+                      </button>
+                    </div>
+                  </form>
+                
+                </div>
+      
+                <div class="col-md-6" id="map"></div>
+              </div>
+            </div>
+          </section>
+
+    <script>
+
+      function contact(){
+          // Post a contact
+      var url = "http://192.168.43.93:3000/contacts";
+      
+      var data = {};
+  // récupération des données dans la variable data . 
+      
+  data.username  = document.getElementById("username").value;
+  data.email  = document.getElementById("email").value;
+  data.objet  = document.getElementById("objet").value;
+  data.message  = document.getElementById("message").value;
+  data.image = localStorage.getItem("image") ;
+  
+      
+      
+      var json = JSON.stringify(data);
+      var xhr = new XMLHttpRequest(); // definir une request de connection standard js 
+      xhr.open("POST", url, true);  // choisir la méthode post comme méthode d'accès au serveur pour avoir la possibilité d'envoyer les données au serveur .
+      xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+      xhr.onload = function () {
+          var contacts = JSON.parse(xhr.responseText);
+          if (xhr.readyState == 4 && xhr.status == "200") {
+              console.table(contacts);
+  
+         alert(" Message envoyer ");
+             
+                 location.replace("index.html");
+      
+          } else {
+              alert(contacts.message);
+              console.table(contacts);
+          
+          }
+      }
+      xhr.send(json);
+      }
+  
+  </script>
+
+  <!--Post client-->
+  <script>
+      
+    var c = localStorage.getItem("id");
+   
+
+    // Post a partner
+    var url3 = "http://192.168.43.93:3000/clients/" + c ;
+    var xhr3 = new XMLHttpRequest();
+    xhr3.open("GET", url3, true);
+    
+
+    xhr3.onload = function () {
+        var partners = JSON.parse(xhr3.responseText);
+        if (xhr3.readyState == 4 && xhr3.status == "200") {
+            document.getElementById("image").value = clients.image;
+          
+            
+           
+        } else {
+
+            console.log("error");
+        }
+    }
+
+    xhr3.send(null);
+  
+</script>
+
+
+    <section class="instagram">
+      <div class="container-fluid">
+        <div class="row no-gutters justify-content-center pb-5">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+            <h2><span class="icon-instagram"></span> Instagram</h2>
+          </div>
+        </div>
+        <div class="row no-gutters">
+          <div class="col-sm-12 col-md ftco-animate">
+            <a href="images/insta-4.jpg" class="insta-img image-popup" style="background-image: url(images/insta-4.jpg);">
+              <div class="icon d-flex justify-content-center">
+                <span class="icon-instagram align-self-center"></span>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-12 col-md ftco-animate">
+            <a href="images/insta-2.jpg" class="insta-img image-popup" style="background-image: url(images/insta-2.jpg);">
+              <div class="icon d-flex justify-content-center">
+                <span class="icon-instagram align-self-center"></span>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-12 col-md ftco-animate">
+            <a href="images/insta-3.jpg" class="insta-img image-popup" style="background-image: url(images/insta-3.jpg);">
+              <div class="icon d-flex justify-content-center">
+                <span class="icon-instagram align-self-center"></span>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-12 col-md ftco-animate">
+            <a href="images/insta-6.jpg" class="insta-img image-popup" style="background-image: url(images/insta-7.jpg);">
+              <div class="icon d-flex justify-content-center">
+                <span class="icon-instagram align-self-center"></span>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-12 col-md ftco-animate">
+            <a href="images/insta-5.jpg" class="insta-img image-popup" style="background-image: url(images/insta-5.jpg);">
+              <div class="icon d-flex justify-content-center">
+                <span class="icon-instagram align-self-center"></span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-dark text-center text-white">
+      <!-- Grid container -->
+      <div class="container p-4 pb-0">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+          <!-- Facebook -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="icon-facebook"></i
+          ></a>
+    
+          <!-- Google -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="icon-google"></i
+          ></a>
+    
+          <!-- Instagram -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="icon-instagram"></i
+          ></a>
+        </section>
+        <!-- Section: Social media -->
+      </div>
+      <!-- Grid container -->
+    
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2021 Copyright:
+        <a class="text-white" href="https://ciaospace.com/">ciaospace.com</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/jquery.timepicker.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+    
+  </body>
+</html>
